@@ -1,14 +1,13 @@
-# Plantie e-comm shop
+# Payment e-comm app
 An ecommerce website with standard functionality using backend REST API
 
 [Deployed version](https://plantie.atonkopiy.com/)
 (Note that loading might be slow due to free plan on Render hosting platform)
 
 ## Features ##
-* CRUD operations on products, user accounts and orders
-* User authentication with JSON Web Token
-* Full-text search and filtering products
-* Payment procedure with Stripe
+* Cart: Users are able to add products to their cart, respecting the available stock limit
+* Checkout Page: Once products are added, users are be able to navigate to a checkout page and place an order
+* Orders: After placing an order, an entry is created in the database with the total price and each item in the order. Product stock is also updated.
 
 ## Technologies ##
 ⚙️Backend:
