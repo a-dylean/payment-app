@@ -29,9 +29,9 @@ export const theme = createTheme({
   typography: {
     allVariants: {},
     h1: {
-      fontFamily: 'Fasthand',
-      fontSize: '3rem',
+      fontSize: '2.5rem',
       color: darkViolet,
+      fontWeight: "bold" 
     },
     h5: {
       fontFamily: 'Roboto Slab',

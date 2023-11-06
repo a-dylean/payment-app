@@ -2,7 +2,6 @@ import {
   Card,
   CardActions,
   CardContent,
-  CardMedia,
   Typography,
   Box,
   styled,
@@ -28,12 +27,6 @@ export const ProductItem = (product: Product) => {
           }}
           sx={{ cursor: 'pointer' }}
         >
-          <CardMedia
-            component="img"
-            alt="product img"
-            height="400px"
-            image={product.picture || ""}
-          />
           <CardContent>
             <Box display="flex" justifyContent="space-between">
               <Typography gutterBottom variant="h5" component="div">
@@ -43,15 +36,6 @@ export const ProductItem = (product: Product) => {
                 <Price price={product.price}/>
               </Typography>
             </Box>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              component="div"
-              height={'7rem'}
-              sx={{ wordBreak: 'break-word', textAlign: 'justify' }}
-            >
-              {product.description}
-            </Typography>
           </CardContent>
         </Box>
         <CardActions>

@@ -5,13 +5,8 @@ export const NothingFound = () => {
     <>
       <Box sx={{ width: 300 }}>
         <Typography variant="h6" align="center">
-          Oopsie daisy! We couldn't find any plants that match your filtering
+          We couldn't find any items that match your filtering
           parameters.
-        </Typography>
-        <br />
-        <Typography align="center">
-          Check out our other plant varieties. <br />
-          Happy browsing! 🌿🌸🌱
         </Typography>
       </Box>
     </>

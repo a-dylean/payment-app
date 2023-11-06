@@ -60,8 +60,6 @@ export const Cart = () => {
         {!cartItems || cartItems?.length === 0 ? (
           <Typography>
             So far empty...
-            <br /> We have plenty of beautiful plants to choose from. Happy
-            shopping!🛍️
           </Typography>
         ) : (
           <>

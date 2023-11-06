@@ -51,7 +51,7 @@ export const Topbar = () => {
             sx={{ flexGrow: 1, textAlign: 'center' }}
             onClick={() => navigate(routes.ALL_PRODUCTS)}
           >
-            Plantie
+            My Shop
           </Typography>
         </Box>
         <IconButton onClick={() => setCartOpen(true)}>
