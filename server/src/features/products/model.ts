@@ -64,18 +64,4 @@ export class ProductModel {
       },
     });
   }
-  async getCheapestProduct(): Promise<Product | null> {
-    return await prisma.product.findFirst({
-      orderBy: {
-        price: 'asc'
-      }
-    })
-  }
-  async getHighestPriceProduct(): Promise<Product | null> {
-    return await prisma.product.findFirst({
-      orderBy: {
-        price: 'desc'
-      }
-    })
-  }
 }

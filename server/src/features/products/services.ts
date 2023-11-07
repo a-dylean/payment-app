@@ -25,10 +25,4 @@ export class ProductService {
       searchItem
     );
   }
-  async getCheapestProduct(): Promise<Product | null> {
-    return await ProductModelInstance.getCheapestProduct();
-  }
-  async getHighestPriceProduct(): Promise<Product | null> {
-    return await ProductModelInstance.getHighestPriceProduct();
-  }
 }

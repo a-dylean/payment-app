@@ -36,22 +36,6 @@ export class ProductsController extends Controller {
       searchTerm
     );
   }
-    /**
-   * Retrieves a product with the lowest price.
-   * @returns Cheapest product
-   */
-  @Get("cheapest")
-  public async getCheapest(): Promise<Product | null> {
-    return new ProductService().getCheapestProduct();
-  }
-      /**
-   * Retrieves a product with the highest price.
-   * @returns The most  product
-   */
-  @Get("highestPrice")
-  public async getHighestPrice(): Promise<Product | null> {
-    return new ProductService().getHighestPriceProduct();
-  }
   /**
    * Retrieves the detailes of a particular product provided the unique product ID.
    * @param productId Identifier of the product
