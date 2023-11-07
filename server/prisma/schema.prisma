@@ -4,16 +4,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
-}
-
-model Category {
-  id           Int       @id @default(autoincrement())
-  categoryName String   @unique @map("category_name") @db.VarChar(100)
-  product      Product[]
-
-  @@map("category")
 }
 
 model Order {
@@ -21,7 +13,7 @@ model Order {
   userId       Int            @map("user_id")
   createdAt    DateTime?      @default(now()) @map("created_at") @db.Timestamp(6)
   updatedAt    DateTime?      @updatedAt @map("updated_at") @db.Timestamp(6)
-  amount       Decimal?       @db.Money
+  amount       Decimal?       
   status       String         @default("Draft")
   user         User?          @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   ProductOrder ProductOrder[]
@@ -29,13 +21,13 @@ model Order {
 }
 
 model ProductOrder {
-  id        Int      @id(map: "checkout_pkey") @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   createdAt    DateTime?      @default(now()) @map("created_at") @db.Timestamp(6)
   updatedAt    DateTime?      @updatedAt @map("updated_at") @db.Timestamp(6)
   productId Int?     @map("product_id")
   quantity  Int      @default(0)
   orderId   Int?     @map("order_id")
-  price     Decimal  @db.Money
+  price     Decimal  
   product   Product? @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "checkout_product_id_fkey")
   order     Order?   @relation(fields: [orderId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   @@map("product_order")
@@ -43,15 +35,11 @@ model ProductOrder {
 
 model Product {
   id           Int            @id @default(autoincrement())
-  name         String         @unique @db.VarChar(256)
-  description  String         @db.Text
-  price        Decimal        @db.Money
-  available    Boolean        @default(true)
-  categoryName   String       @map("category_name")
+  name         String         @db.VarChar(255)
+  price        Decimal        
   createdAt    DateTime       @default(now()) @map("created_at") @db.Timestamp(6)
   updatedAt    DateTime?      @updatedAt @map("updated_at") @db.Timestamp(6)
-  picture      String?
-  category     Category?      @relation(fields: [categoryName], references: [categoryName], onDelete: NoAction, onUpdate: NoAction)
+  inventory    Int
   ProductOrder ProductOrder[]
 
   @@map("product")

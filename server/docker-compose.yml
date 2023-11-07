@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  db:
+    image: mysql/mysql-server:8.0.20
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_ROOT_HOST=% 
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./db:/var/lib/mysql
+volumes:
+  db:
+    driver: local

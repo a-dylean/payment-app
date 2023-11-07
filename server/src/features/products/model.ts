@@ -1,14 +1,14 @@
-import { Category, Prisma, PrismaClient, Product } from "@prisma/client";
+import { Prisma, Product } from "@prisma/client";
 import { stripe } from "../orders/controller";
-const prisma = new PrismaClient();
+import { prisma } from "../../../prisma/prisma";
 
 export type ProductCreationParams = Pick<
   Product,
-  "name" | "description" | "price" | "available" | "categoryName"
+  "name" | "price"
 >;
 
 export class ProductModel {
-  async create(data: ProductCreationParams): Promise<Product> {
+  async create(data: ProductCreationParams): Promise<void> {
     const product = await stripe.products.create({
       name: data.name,
       default_price_data: {
@@ -20,26 +20,6 @@ export class ProductModel {
       product: product.id,
       unit_amount: Number(data.price) * 100,
       currency: "eur",
-    });
-    return await prisma.product.create({
-      data: {
-        ...data,
-      },
-    });
-  }
-  async update(id: number, data: ProductCreationParams): Promise<Product> {
-    await stripe.products.update(id.toString(), {
-      name: data.name,
-      active: data.available,
-      description: data.description,
-    });
-    return await prisma.product.update({
-      where: {
-        id: id,
-      },
-      data: {
-        ...data,
-      },
     });
   }
   async findProductById(id: Product["id"]): Promise<Product | null> {
@@ -59,7 +39,6 @@ export class ProductModel {
   }
   async sortProducts(
     priceRange?: string,
-    categoryName?: Category["categoryName"],
     orderBy?: Prisma.SortOrder,
     searchItem?: string
   ): Promise<Product[]> {
@@ -72,9 +51,6 @@ export class ProductModel {
               gte: priceRangeArr[0],
               lte: priceRangeArr[1],
             },
-          },
-          {
-            categoryName: categoryName,
           },
           {
             name: {

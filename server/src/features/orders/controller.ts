@@ -157,7 +157,7 @@ export class PaymentController extends Controller {
           currency: currency,
           product_data: {
             name: product.name,
-            images: [product.picture!],
+            //images: [product.picture!],
           },
           unit_amount: getStripeValue(product.price),
         },

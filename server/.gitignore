@@ -7,3 +7,6 @@ dist
 .vscode
 yarn-debug.log*
 yarn-error.log*
+db
+.eslintrc.json
+.prettierrc.json
