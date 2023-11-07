@@ -106,24 +106,15 @@ export interface UserInfo {
   refreshToken: string;
 }
 
-/** Model Category */
-export interface Category {
-  categoryName: string;
-  /** @format double */
-  id: number;
-}
-
 /** Model Product */
 export interface Product {
-  picture: string | null;
+  /** @format double */
+  inventory: number;
   /** @format date-time */
   updatedAt: string | null;
   /** @format date-time */
   createdAt: string;
-  categoryName: string;
-  available: boolean;
   price: PrismaDecimal;
-  description: string;
   name: string;
   /** @format double */
   id: number;
@@ -133,17 +124,6 @@ export enum PrismaSortOrder {
   Asc = "asc",
   Desc = "desc",
 }
-
-/** From T, pick a set of properties whose keys are in the union K */
-export interface PickProductNameOrDescriptionOrPriceOrAvailableOrCategoryName {
-  price: PrismaDecimal;
-  name: string;
-  description: string;
-  available: boolean;
-  categoryName: string;
-}
-
-export type ProductCreationParams = PickProductNameOrDescriptionOrPriceOrAvailableOrCategoryName;
 
 /** Model User */
 export interface User {
@@ -385,13 +365,13 @@ export class HttpClient<SecurityDataType = unknown> {
 }
 
 /**
- * @title Plantie app API
+ * @title Payment app API
  * @version 1.0.0
  * @license ISC
  * @baseUrl /
  * @contact
  *
- * CRUD API made with Express
+ * CRUD API made with Express server
  */
 export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
   orders = {
@@ -613,22 +593,6 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
         ...params,
       }),
   };
-  categories = {
-    /**
-     * @description Retrieves a list of all categories in the system. If filtering criteria are provided, filters the list of products.
-     *
-     * @tags Categories
-     * @name GetCategories
-     * @request GET:/categories
-     */
-    getCategories: (params: RequestParams = {}) =>
-      this.request<Category[], any>({
-        path: `/categories`,
-        method: "GET",
-        format: "json",
-        ...params,
-      }),
-  };
   products = {
     /**
      * @description Retrieves a list of all products in the system. If filtering criteria are provided, filters the list of products.
@@ -640,7 +604,6 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     getProducts: (
       query?: {
         priceRange?: string;
-        categoryName?: string;
         orderBy?: PrismaSortOrder;
         searchTerm?: string;
       },
@@ -650,25 +613,6 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
         path: `/products`,
         method: "GET",
         query: query,
-        format: "json",
-        ...params,
-      }),
-
-    /**
-     * @description Creates a new product in the system.
-     *
-     * @tags Products
-     * @name CreateProduct
-     * @request POST:/products
-     * @secure
-     */
-    createProduct: (data: ProductCreationParams, params: RequestParams = {}) =>
-      this.request<Product, any>({
-        path: `/products`,
-        method: "POST",
-        body: data,
-        secure: true,
-        type: ContentType.Json,
         format: "json",
         ...params,
       }),
@@ -714,25 +658,6 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       this.request<Product, any>({
         path: `/products/${productId}`,
         method: "GET",
-        format: "json",
-        ...params,
-      }),
-
-    /**
-     * @description Updates the detailes of a particular product provided the unique product ID.
-     *
-     * @tags Products
-     * @name UpdateProduct
-     * @request PUT:/products/{productId}
-     * @secure
-     */
-    updateProduct: (productId: number, data: ProductCreationParams, params: RequestParams = {}) =>
-      this.request<Product, any>({
-        path: `/products/${productId}`,
-        method: "PUT",
-        body: data,
-        secure: true,
-        type: ContentType.Json,
         format: "json",
         ...params,
       }),

@@ -5,8 +5,8 @@
   "spec": {
     "outputDirectory": "build",
     "specVersion": 3,
-    "name": "Plantie app API",
-    "description": "CRUD API made with Express",
+    "name": "Payment app API",
+    "description": "CRUD API made with Express server",
     "securityDefinitions": {
       "jwt": {
         "type": "http",
