@@ -56,10 +56,10 @@ export const Cart = () => {
   return (
     <>
       <CartBox>
-        <Typography variant="h5">Your Cart</Typography>
+        <Typography variant="h5">Mon panier</Typography>
         {!cartItems || cartItems?.length === 0 ? (
           <Typography>
-            So far empty...
+            Votre panier est vide
           </Typography>
         ) : (
           <>
@@ -73,7 +73,7 @@ export const Cart = () => {
                 }
                 startIcon={<ShoppingCartCheckoutIcon />}
               >
-                Checkout
+                Commander
               </Button>
               <Typography variant="h6">
                 Total: €{calculateTotalCartAmount(cartItems)}

@@ -60,11 +60,11 @@ export const FullProfilePage = (user: User) => {
             overflow: 'visible',
           }}
         >
-          <Tab label="Profile" {...a11yProps(0)} />
-          <Tab label="Orders" {...a11yProps(1)} />
+          <Tab label="Mon compte" {...a11yProps(0)} />
+          <Tab label="Commandes" {...a11yProps(1)} />
         </Tabs>
         <TabPanel value={value} index={0}>
-          <Typography variant="h5">Profile information</Typography>
+          <Typography variant="h5">Mon compte</Typography>
           <Box sx={{ display: 'flex' }}>
             <List>
               <UserInfo {...user} />
@@ -72,7 +72,7 @@ export const FullProfilePage = (user: User) => {
           </Box>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Typography variant="h5">Orders information</Typography>
+          <Typography variant="h5">Commandes</Typography>
           <OrdersInfo {...user} />
         </TabPanel>
       </Box>

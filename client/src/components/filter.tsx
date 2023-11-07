@@ -17,9 +17,7 @@ import { backgroundColor } from './theme';
 import { FilterProps } from '../app/interfaces';
 import { debounceTime } from '../appconfig';
 import { Price } from './price';
-import { useQuery } from '@tanstack/react-query';
-import { api } from '../helpers/axios';
-import { Category, Product } from '../models/api';
+import { Product } from '../models/api';
 import { queryClient } from '..';
 import { getMax, getMin } from '../helpers/helperFunctions';
 
@@ -29,15 +27,14 @@ const FilterBox = styled(Box)(({ theme }) => ({
   justifyContent: 'space-evenly',
   marginBottom: theme.spacing(0.5),
   position: 'sticky',
-  top: theme.spacing(7),
+  top: theme.spacing(6),
   backgroundColor: backgroundColor,
   padding: theme.spacing(2),
   zIndex: 5,
-  gap: theme.spacing(1),
+  gap: theme.spacing(3),
 }));
 
 export const Filter: React.FC<FilterProps> = ({
-  chooseCategory,
   choosePriceRange,
   chooseSortMethod,
   search,
@@ -47,17 +44,6 @@ export const Filter: React.FC<FilterProps> = ({
   ]);
   const minPrice = getMin(products);
   const maxPrice = getMax(products);
-  const { data: categories } = useQuery({
-    queryKey: ['categories'],
-    queryFn: async () => {
-      const res = await api.get('/categories');
-      return res.data as Category[];
-    },
-  });
-
-  const handleCategoryChange = (event: SelectChangeEvent) => {
-    chooseCategory(event.target.value as string);
-  };
 
   const handleSortChange = (event: SelectChangeEvent) => {
     chooseSortMethod(event.target.value as string);
@@ -66,7 +52,7 @@ export const Filter: React.FC<FilterProps> = ({
   const [searchTerm, setSearchTerm] = useState<string>('');
   const valuetext = (value: number[]) => {
     if (value[0] === 0 && value[1] === 0) {
-      return 'Price range';
+      return 'Prix';
     }
     return (
       <>
@@ -113,7 +99,7 @@ export const Filter: React.FC<FilterProps> = ({
     <>
       <FilterBox>
         <FormControl sx={{ width: '100%' }}>
-          <InputLabel id="select-sort-label">Sort</InputLabel>
+          <InputLabel id="select-sort-label">Trier</InputLabel>
           <Select
             labelId="select-sort-label"
             id="select-sort-label"
@@ -121,27 +107,8 @@ export const Filter: React.FC<FilterProps> = ({
             onChange={handleSortChange}
             sx={{ width: '100%' }}
           >
-            <MenuItem value={'desc'}>Price high to low</MenuItem>
-            <MenuItem value={'asc'}>Price low to high</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl sx={{ width: '100%' }}>
-          <InputLabel id="select-product-type-label">Product Type</InputLabel>
-          <Select
-            labelId="select-product-type-label"
-            id="select-product-type-label"
-            label="Product Type"
-            onChange={handleCategoryChange}
-            sx={{ width: '100%' }}
-          >
-            <MenuItem value={undefined}>All</MenuItem>
-            {categories?.map((category) => {
-              return (
-                <MenuItem key={category.id} value={category.categoryName}>
-                  {category.categoryName}
-                </MenuItem>
-              );
-            })}
+            <MenuItem value={'desc'}>Prix décroissant</MenuItem>
+            <MenuItem value={'asc'}>Prix croissant</MenuItem>
           </Select>
         </FormControl>
         <FormControl sx={{ width: '100%' }}>
@@ -163,7 +130,7 @@ export const Filter: React.FC<FilterProps> = ({
               <Slider
                 size="small"
                 getAriaLabel={() => {
-                  return 'Price range';
+                  return 'Prix';
                 }}
                 value={value}
                 onChange={handlePriceRangeChange}
@@ -175,7 +142,7 @@ export const Filter: React.FC<FilterProps> = ({
           </Select>
         </FormControl>
         <FormControl sx={{ width: '100%' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Search</InputLabel>
+          <InputLabel htmlFor="outlined-adornment-password">Rechercher</InputLabel>
           <OutlinedInput
             id="search-field"
             value={searchTerm}

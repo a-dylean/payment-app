@@ -1,7 +1,6 @@
 import {
   Typography,
   Card,
-  CardMedia,
   CardContent,
   Grid,
   LinearProgress,
@@ -36,18 +35,12 @@ export const ProductPage = () => {
         {product && (
           <Grid container>
             <Grid xs={6}>
-              <CardMedia
-                component="img"
-                alt="product img"
-                image={product.picture || ''}
-              />
             </Grid>
             <Grid xs={6}>
               <CardContent>
                 <Typography variant="h5">{product.name}</Typography>
-                <Typography variant="body1">{product.description}</Typography>
                 <Typography variant="h6">{`Availability: ${
-                  product.available ? 'in stock' : 'out of stock'
+                  product.inventory ? 'in stock' : 'out of stock'
                 }`}</Typography>
                 <Typography variant="h6">
                   Price: <Price price={product.price} />

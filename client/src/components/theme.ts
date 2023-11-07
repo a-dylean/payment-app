@@ -2,19 +2,17 @@ import { createTheme } from '@mui/material';
 
 export const backgroundColor = '#f7f6f3';
 export const lightGrey = '#dedede';
-export const violet = '#9c73d2';
-export const darkViolet = '#4f21a5';
-export const lightViolet = '#f7f5fd';
+export const orange = '#cb5540';
 export const header = '#f0f1ed';
 
 export const theme = createTheme({
   palette: {
     primary: {
-      main: darkViolet,
-      light: violet,
+      main: orange,
+      light: orange,
     },
     secondary: {
-      main: darkViolet,
+      main: orange,
     },
   },
   breakpoints: {
@@ -30,14 +28,15 @@ export const theme = createTheme({
     allVariants: {},
     h1: {
       fontSize: '2.5rem',
-      color: darkViolet,
+      color: orange,
       fontWeight: "bold" 
     },
     h5: {
-      fontFamily: 'Roboto Slab',
+      fontFamily: 'Work Sans',
+      fontWeight: "bold"
     },
     body2: {
-      fontFamily: 'Roboto',
+      fontFamily: 'Work Sans',
     },
   },
   components: {
@@ -52,7 +51,7 @@ export const theme = createTheme({
     MuiContainer: {
       styleOverrides: {
         root: {
-          marginTop: '5rem',
+          marginTop: '3rem',
         },
       },
     },
@@ -84,7 +83,7 @@ export const theme = createTheme({
     MuiTabs: {
       styleOverrides: {
         indicator: {
-          backgroundColor: violet,
+          backgroundColor: orange,
         },
       },
     },
@@ -92,7 +91,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           '&.Mui-selected': {
-            color: violet,
+            color: orange,
           },
           fontWeight: 700,
         },
@@ -118,11 +117,10 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           '&.Mui-selected': {
-            color: violet,
-            backgroundColor: lightViolet,
+            color: orange,
           },
           '&:hover': {
-            backgroundColor: lightViolet,
+            backgroundColor: orange,
           },
         },
       },
@@ -133,7 +131,7 @@ export const theme = createTheme({
     MuiFormControl: {
       styleOverrides: {
         root: {
-          color: violet,
+          color: orange,
         },
       },
     },

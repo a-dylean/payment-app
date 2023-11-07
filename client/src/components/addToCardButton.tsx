@@ -46,7 +46,7 @@ export const AddToCartButton = (product: Product) => {
       endIcon={<ShoppingBasketIcon />}
       onClick={handleClick}
     >
-      Add to Cart
+      Ajouter au panier
     </Button>
   );
 };

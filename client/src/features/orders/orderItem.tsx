@@ -19,16 +19,16 @@ export const OrderItem = (order: Order) => {
             <EmojiNatureIcon />
           </ListItemIcon>
           <Typography sx={{ fontWeight: 700 }}>
-            Order #{order.id}
+          Numéro de commande:  #{order.id}
           </Typography>
         </ListItem>
         <Divider />
         <ListItem>
-          Date of creation: <br />
+        Date de commande: <br />
           {creationDate}
         </ListItem>
-        <ListItem>Total amount: €{total}</ListItem>
-        <ListItem>Status: {order.status}</ListItem>
+        <ListItem>Total: €{total}</ListItem>
+        <ListItem>Statut du paiement: {order.status}</ListItem>
       </List>
     </ColoredCard>
   );

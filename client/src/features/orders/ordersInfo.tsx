@@ -1,9 +1,8 @@
 import { CircularProgress, List, Typography } from '@mui/material';
 import { OrderItem } from './orderItem';
-//import { useGetUserOrdersQuery } from './ordersApi';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '../../helpers/routes';
-import { violet } from '../../components/theme';
+import { orange } from '../../components/theme';
 import { useGetUserOrders } from './ordersActions';
 import { User } from '../../models/api';
 export const OrdersInfo = (user: User ) => {
@@ -33,10 +32,10 @@ export const OrdersInfo = (user: User ) => {
           renderedItems
         ) : (
           <Typography
-            sx={{ mt: 1, cursor: 'pointer', ':hover': { color: violet } }}
+            sx={{ mt: 1, cursor: 'pointer', ':hover': { color: orange } }}
             onClick={() => navigate(routes.ALL_PRODUCTS)}
           >
-            No previous orders. Let's make one!
+            Aucune commande précédente
           </Typography>
         )}
       </>
