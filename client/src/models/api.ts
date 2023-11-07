@@ -616,37 +616,6 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
         format: "json",
         ...params,
       }),
-
-    /**
-     * @description Retrieves a product with the lowest price.
-     *
-     * @tags Products
-     * @name GetCheapest
-     * @request GET:/products/cheapest
-     */
-    getCheapest: (params: RequestParams = {}) =>
-      this.request<Product | null, any>({
-        path: `/products/cheapest`,
-        method: "GET",
-        format: "json",
-        ...params,
-      }),
-
-    /**
-     * @description Retrieves a product with the highest price.
-     *
-     * @tags Products
-     * @name GetHighestPrice
-     * @request GET:/products/highestPrice
-     */
-    getHighestPrice: (params: RequestParams = {}) =>
-      this.request<Product | null, any>({
-        path: `/products/highestPrice`,
-        method: "GET",
-        format: "json",
-        ...params,
-      }),
-
     /**
      * @description Retrieves the detailes of a particular product provided the unique product ID.
      *
