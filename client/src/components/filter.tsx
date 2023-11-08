@@ -141,8 +141,8 @@ export const Filter: React.FC<FilterProps> = ({
             </Box>
           </Select>
         </FormControl>
-        <FormControl sx={{ width: '100%' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Rechercher</InputLabel>
+        <FormControl sx={{ width: '100%' }}>
+          <InputLabel>Rechercher</InputLabel>
           <OutlinedInput
             id="search-field"
             value={searchTerm}
@@ -160,7 +160,7 @@ export const Filter: React.FC<FilterProps> = ({
                 </InputAdornment>
               )
             }
-            label="Search"
+            label="Rechercher"
           />
         </FormControl>
       </FilterBox>

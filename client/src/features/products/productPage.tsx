@@ -4,6 +4,7 @@ import {
   CardContent,
   Grid,
   LinearProgress,
+  CardMedia,
 } from '@mui/material';
 import { Layout } from '../../app/layout';
 import { Price } from '../../components/price';
@@ -35,6 +36,11 @@ export const ProductPage = () => {
         {product && (
           <Grid container>
             <Grid xs={6}>
+            <CardMedia
+          component="img"
+          height="420"
+          image="https://www.bandg.com/assets/img/default-product-img.png?w=400&h=225&scale=both&mode=max"
+          alt="item pic"/>
             </Grid>
             <Grid xs={6}>
               <CardContent>

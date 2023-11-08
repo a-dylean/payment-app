@@ -39,11 +39,11 @@ export const ProductItem = (product: Product) => {
               </Typography>
             </Box>
           </CardContent>
-        </Box><CardMedia
+        <CardMedia
           component="img"
           height="210"
           image="https://www.bandg.com/assets/img/default-product-img.png?w=400&h=225&scale=both&mode=max"
-          alt="Paella dish"/>
+          alt="item pic"/></Box>
         <CardActions>
           <AddToCartButton {...product} />
         </CardActions>

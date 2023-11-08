@@ -25,19 +25,21 @@ export const theme = createTheme({
     },
   },
   typography: {
-    allVariants: {},
+    allVariants: {
+      fontFamily: 'Work Sans',
+    },
     h1: {
       fontSize: '2.5rem',
       color: orange,
       fontWeight: "bold" 
     },
     h5: {
-      fontFamily: 'Work Sans',
+      fontSize: '1.2rem',
       fontWeight: "bold"
     },
-    body2: {
-      fontFamily: 'Work Sans',
-    },
+    h6: {
+      fontSize: '1.2rem',
+    }
   },
   components: {
     MuiCssBaseline: {
