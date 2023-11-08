@@ -232,7 +232,7 @@ export class PaymentController extends Controller {
     }
   }
   /**
-   * Creates Stripe webhook to update database is the checkout session was successfull.
+   * Creates Stripe webhook to update database if the checkout session was successfull.
    */
   @Post("/webhook")
   public async createWebhook(@Request() req: ExRequest): Promise<void> {
@@ -248,6 +248,7 @@ export class PaymentController extends Controller {
             prismaOrder.id,
             getValueFromStripe(metadata.amount_total)
           );
+          //await new ProductService().updateInventory()
         }
         break;
       default:

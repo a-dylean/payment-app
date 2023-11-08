@@ -1,8 +1,7 @@
-import { PrismaClient, User } from "@prisma/client";
+import { User } from "@prisma/client";
 import { generateHash } from "../../helpers/bcrypt";
 import { stripe } from "../orders/controller";
-
-const prisma = new PrismaClient();
+import { prisma } from "../../../prisma/prisma";
 
 export type UserCreationParams = {
   name: string;

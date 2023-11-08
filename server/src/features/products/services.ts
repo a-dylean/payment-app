@@ -25,4 +25,7 @@ export class ProductService {
       searchItem
     );
   }
+  async updateInventory(productId: number, quantity: number): Promise<Product> {
+    return await ProductModelInstance.updateInventory(productId, quantity);
+  }
 }

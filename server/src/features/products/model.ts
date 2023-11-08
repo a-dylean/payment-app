@@ -64,4 +64,16 @@ export class ProductModel {
       },
     });
   }
+  async updateInventory(productId: number, quantity: number): Promise<Product> {
+    return await prisma.product.update({
+      where: {
+        id: productId
+      },
+      data: {
+        inventory: {
+          decrement: quantity
+        }
+      }
+    })
+  }
 }
