@@ -24,3 +24,10 @@ An e-commerce website with REST API
 * [Material UI](https://mui.com/material-ui/)
 
 ## How to run locally ##
+
+## Screenshots ##
+<p align="center" width="100%">
+<img width="541" alt="Screenshot 2023-11-09 225025" src="https://github.com/a-dylean/payment-app/assets/83976465/561c9537-4901-4317-8b6f-81e41d6b0178">
+<img width="555" alt="Screenshot 2023-11-09 225208" src="https://github.com/a-dylean/payment-app/assets/83976465/ebbb36d4-cb9a-4416-8316-fa366da7419f">
+<img width="551" alt="Screenshot 2023-11-09 224906" src="https://github.com/a-dylean/payment-app/assets/83976465/30319960-85f9-4d43-a66f-495d329dc2b3">
+</p>
