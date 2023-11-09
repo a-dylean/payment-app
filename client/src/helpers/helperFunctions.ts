@@ -27,5 +27,5 @@ export const getMax = (arr: Product[] | undefined) => {
   if (!arr) {
     return;
   }
-  return Math.max(...arr.map((item) => parseInt(item.price)));
+  return Math.round((Math.max(...arr.map((item) => parseInt(item.price)))/100))*100;
 };

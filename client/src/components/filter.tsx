@@ -18,8 +18,9 @@ import { FilterProps } from '../app/interfaces';
 import { debounceTime } from '../appconfig';
 import { Price } from './price';
 import { Product } from '../models/api';
-import { queryClient } from '..';
 import { getMax, getMin } from '../helpers/helperFunctions';
+import { useQuery } from '@tanstack/react-query';
+import { api } from '../helpers/axios';
 
 const FilterBox = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -39,16 +40,20 @@ export const Filter: React.FC<FilterProps> = ({
   chooseSortMethod,
   search,
 }) => {
-  const products: Product[] | undefined = queryClient.getQueryData([
-    'products',
-  ]);
+  const { data: products } = useQuery({
+    queryFn: () =>
+      api
+        .get('products')
+        .then((res) => res.data as Product[]),
+  });
+  console.log(products)
   const minPrice = getMin(products);
   const maxPrice = getMax(products);
-
+  console.log(maxPrice)
   const handleSortChange = (event: SelectChangeEvent) => {
     chooseSortMethod(event.target.value as string);
   };
-  const [value, setValue] = useState<number[]>([minPrice ?? 0, maxPrice ?? 0]);
+  const [value, setValue] = useState<number[]>([0, 0]);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const valuetext = (value: number[]) => {
     if (value[0] === 0 && value[1] === 0) {
