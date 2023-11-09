@@ -11,6 +11,11 @@ export type ProductOrderCreationParams = Pick<
   "productId" | "orderId" | "quantity" | "price"
 >;
 
+export type ProductUpdateParams = Pick<
+  ProductOrder,
+  "quantity"
+>;
+
 export type OrderCreationParams = Pick<Order, "userId">;
 
 export class OrderModel {
@@ -53,7 +58,7 @@ export class OrderModel {
     return await prisma.order.findMany({
       where: {
         userId: id,
-        status: "Payment Received",
+        status: "Réglé",
       },
       orderBy: {
         id: "desc",
@@ -125,7 +130,7 @@ export class OrderModel {
         id: id,
       },
       data: {
-        status: "Payment Received",
+        status: "Réglé",
         amount: amount,
       },
     });

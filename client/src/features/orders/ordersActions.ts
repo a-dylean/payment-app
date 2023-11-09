@@ -1,13 +1,33 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { api } from '../../helpers/axios';
-import { Order, ProductOrder } from '../../models/api';
+import { Order, Product, ProductOrder, User, UserInfo } from '../../models/api';
 import { queryClient } from '../..';
 import { securelyGetAccessToken } from '../../helpers/refreshToken';
-import { StripeRequestProps, StripeResponse, getProductOrderProps, newProductOrderProps } from '../../app/interfaces';
+import {
+  StripeRequestProps,
+  StripeResponse,
+  getProductOrderProps,
+  newProductOrderProps,
+} from '../../app/interfaces';
+
+export const useCreateOrder = () => {
+  const { mutate: createOrder } = useMutation({
+    mutationFn: async (userId: number) => {
+      const res = await api.post('orders', { userId: userId });
+      return res.data as Order;
+    },
+  });
+  return createOrder;
+};
 
 export const useAddToCart = () => {
   const { mutate: addToCart } = useMutation({
-    mutationFn: async ({ productId, orderId, price, quantity }: newProductOrderProps) => {
+    mutationFn: async ({
+      productId,
+      orderId,
+      price,
+      quantity,
+    }: newProductOrderProps) => {
       const res = await api.post('product-orders', {
         productId,
         orderId,
@@ -65,7 +85,10 @@ export const useGetUserOrders = (userId?: number) => {
   });
 };
 
-export const useGetProductOrder = ({productId, isCartItem}: getProductOrderProps) => {
+export const useGetProductOrder = ({
+  productId,
+  isCartItem,
+}: getProductOrderProps) => {
   const fetchProductOrder = () =>
     api
       .get(`/products/${productId}/product-orders`)
@@ -73,7 +96,7 @@ export const useGetProductOrder = ({productId, isCartItem}: getProductOrderProps
   return useQuery({
     queryKey: ['cart', productId],
     queryFn: fetchProductOrder,
-    enabled: isCartItem
+    enabled: isCartItem,
   });
 };
 
@@ -93,8 +116,7 @@ export const useDeleteItem = () => {
   const { mutate: deleteItem } = useMutation({
     mutationFn: (productOrderId?: number) =>
       api.delete(`product-orders/${productOrderId}`),
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ['cart'] }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['cart'] }),
   });
   return deleteItem;
 };
@@ -122,4 +144,17 @@ export const useCreateCheckoutSession = () => {
     },
   });
   return createCheckoutSession;
+};
+
+export const useUpdateInventory = () => {
+  const { mutate: updateInventory } = useMutation({
+    mutationKey: ['products'],
+    mutationFn: async (data: Partial<ProductOrder>) => {
+      const res = await api.put(`products/${data.productId}`, {
+        quantity: data.quantity,
+      });
+      return res.data as Product;
+    },
+  });
+  return updateInventory;
 };

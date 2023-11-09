@@ -20,7 +20,6 @@ import Stripe from "stripe";
 import {
   FRONTEND_ORIGIN,
   STRIPE_SK,
-  adjustable_quantity_max,
   allowed_countries,
   business_day,
   currency,
@@ -157,15 +156,10 @@ export class PaymentController extends Controller {
           currency: currency,
           product_data: {
             name: product.name,
-            //images: [product.picture!],
           },
           unit_amount: getStripeValue(product.price),
         },
         quantity: item.quantity,
-        adjustable_quantity: {
-          enabled: true,
-          maximum: adjustable_quantity_max,
-        },
       };
     });
     const line_items = await Promise.all(items);
@@ -248,7 +242,6 @@ export class PaymentController extends Controller {
             prismaOrder.id,
             getValueFromStripe(metadata.amount_total)
           );
-          //await new ProductService().updateInventory()
         }
         break;
       default:

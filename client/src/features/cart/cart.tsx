@@ -10,9 +10,11 @@ import { queryClient } from '../..';
 import { User } from '../../models/api';
 import {
   useCreateCheckoutSession,
+  useCreateOrder,
   useDeleteItem,
   useGetCart,
   useGetDraftOrder,
+  useUpdateInventory,
 } from '../orders/ordersActions';
 
 const CartBox = styled('div')(({ theme }) => ({
@@ -29,7 +31,7 @@ export const Cart = () => {
   const { data: draftOrder } = useGetDraftOrder(userId);
   const draftOrderId = draftOrder?.id;
   const { data: cartItems, isLoading, error } = useGetCart(draftOrderId);
-  const deleteItem = useDeleteItem();     
+  const deleteItem = useDeleteItem();
   let content;
   if (isLoading) {
     content = <CircularProgress />;
@@ -43,14 +45,18 @@ export const Cart = () => {
     ));
     content = <>{renderedItems}</>;
   }
+  const createOrder = useCreateOrder();
+  const updateInventory = useUpdateInventory();
   const handleCheckout = () => {
     if (user) {
-      createCheckoutSession({ order: cartItems, userEmail: user.email })
+      createCheckoutSession({ order: cartItems, userEmail: user.email });
+      cartItems?.map((item) => updateInventory(item));
       cartItems
         ?.map((item) => item.id)
         .forEach((id) => {
           deleteItem(id);
         });
+      createOrder(user.id);
     }
   };
   return (
@@ -58,9 +64,7 @@ export const Cart = () => {
       <CartBox>
         <Typography variant="h5">Mon panier</Typography>
         {!cartItems || cartItems?.length === 0 ? (
-          <Typography>
-            Votre panier est vide
-          </Typography>
+          <Typography>Votre panier est vide</Typography>
         ) : (
           <>
             {content}

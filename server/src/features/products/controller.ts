@@ -16,6 +16,7 @@ import { Prisma, Product, ProductOrder } from "@prisma/client";
 import { ProductService } from "./services";
 import { ProductCreationParams } from "./model";
 import { OrderService } from "../orders/services";
+import { ProductUpdateParams } from "../orders/model";
 
 @Route("products")
 @Tags("Products")
@@ -53,6 +54,13 @@ export class ProductsController extends Controller {
     @Path() productId: number
   ): Promise<ProductOrder | null> {
     return new OrderService().getProductOrderByProductId(productId);
+  }
+  /**
+   * Updates inventory provided the product ID.
+   */
+  @Put("{productId}")
+  public async updateInventory(@Path() productId: number, @Body() requestBody: ProductUpdateParams): Promise<Product> {
+    return new ProductService().updateInventory(productId, requestBody.quantity);
   }
   /**
    * Deletes a product from the system.

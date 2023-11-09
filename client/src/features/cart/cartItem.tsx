@@ -62,7 +62,7 @@ export const CartItemComponent = (cartItem: ProductOrder) => {
                 <IconButton
                   color="secondary"
                   onClick={() => updateQuantity(++quantity)}
-                  disabled={product.inventory <= 0}
+                  disabled={product.inventory <= cartItem.quantity}
                 >
                   <AddCircleOutlineIcon />
                 </IconButton>
