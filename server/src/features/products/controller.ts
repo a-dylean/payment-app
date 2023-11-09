@@ -4,7 +4,6 @@ import {
   Delete,
   Get,
   Path,
-  Post,
   Put,
   Route,
   SuccessResponse,
@@ -14,7 +13,6 @@ import {
 } from "tsoa";
 import { Prisma, Product, ProductOrder } from "@prisma/client";
 import { ProductService } from "./services";
-import { ProductCreationParams } from "./model";
 import { OrderService } from "../orders/services";
 import { ProductUpdateParams } from "../orders/model";
 
@@ -31,11 +29,7 @@ export class ProductsController extends Controller {
     @Query() orderBy?: Prisma.SortOrder,
     @Query() searchTerm?: string
   ): Promise<Product[]> {
-    return new ProductService().sortProducts(
-      priceRange,
-      orderBy,
-      searchTerm
-    );
+    return new ProductService().sortProducts(priceRange, orderBy, searchTerm);
   }
   /**
    * Retrieves the detailes of a particular product provided the unique product ID.
@@ -59,8 +53,14 @@ export class ProductsController extends Controller {
    * Updates inventory provided the product ID.
    */
   @Put("{productId}")
-  public async updateInventory(@Path() productId: number, @Body() requestBody: ProductUpdateParams): Promise<Product> {
-    return new ProductService().updateInventory(productId, requestBody.quantity);
+  public async updateInventory(
+    @Path() productId: number,
+    @Body() requestBody: ProductUpdateParams
+  ): Promise<Product> {
+    return new ProductService().updateInventory(
+      productId,
+      requestBody.quantity
+    );
   }
   /**
    * Deletes a product from the system.

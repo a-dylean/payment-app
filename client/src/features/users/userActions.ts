@@ -1,7 +1,7 @@
-import { api } from './axios';
+import { api } from '../../helpers/axios';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { securelyGetAccessToken } from './refreshToken';
-import { UserInfo, User, Order } from '../models/api';
+import { securelyGetAccessToken } from '../../helpers/refreshToken';
+import { UserInfo, User, Order } from '../../models/api';
 
 export const updateUser = async (data: Partial<User>) => {
   const token = await securelyGetAccessToken();

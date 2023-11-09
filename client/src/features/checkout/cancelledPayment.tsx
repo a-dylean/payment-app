@@ -5,9 +5,7 @@ export const CancelledPayment = () => {
   return (
     <Layout>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <Typography variant="h6">
-          Your payment has been declined! Try again!🥴
-        </Typography>
+        <Typography variant="h6">Votre paiement a été refusé🥴</Typography>
       </Box>
     </Layout>
   );

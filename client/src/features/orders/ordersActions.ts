@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { api } from '../../helpers/axios';
-import { Order, Product, ProductOrder, User, UserInfo } from '../../models/api';
+import { Order, Product, ProductOrder } from '../../models/api';
 import { queryClient } from '../..';
 import { securelyGetAccessToken } from '../../helpers/refreshToken';
 import {

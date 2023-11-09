@@ -15,7 +15,7 @@ import { FormEventHandler } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { User } from '../../models/api';
 import { queryClient } from '../..';
-import { loginUser } from '../../helpers/userActions';
+import { loginUser } from '../users/userActions';
 
 export const LoginForm = () => {
   const { register } = useForm();
@@ -41,8 +41,8 @@ export const LoginForm = () => {
 
   return (
     <Box sx={{ m: '0 auto', width: '50%' }}>
-      <Typography component="h1" variant="h5">
-        Sign in
+      <Typography component="h1" variant="h5"  sx={{ mb: 2, mt: 10 }}>
+        Bonjour
       </Typography>
       <SnackbarProvider
         anchorOrigin={{
@@ -58,7 +58,7 @@ export const LoginForm = () => {
           required
           fullWidth
           id="email"
-          label="Email Address"
+          label="E-mail"
           autoComplete="email"
           autoFocus
           {...register('email')}
@@ -69,15 +69,11 @@ export const LoginForm = () => {
           margin="normal"
           required
           fullWidth
-          label="Password"
+          label="Mot de passe"
           type="password"
           id="password"
           autoComplete="current-password"
           {...register('password')}
-        />
-        <FormControlLabel
-          control={<Checkbox value="remember" color="secondary" />}
-          label="Remember me"
         />
         <Button
           type="submit"
@@ -86,11 +82,11 @@ export const LoginForm = () => {
           color="secondary"
           onClick={() => navigate(routes.ME)}
         >
-          Sign In
+          Se connecter
         </Button>
         <Box display="flex" justifyContent="space-evenly" sx={{ mt: 1 }}>
           <Link href="#" variant="body2" color="secondary">
-            Forgot password?
+            Mot de passe oublié ?
           </Link>
           <Link
             onClick={() => navigate(routes.REGISTER)}
@@ -98,7 +94,7 @@ export const LoginForm = () => {
             color="secondary"
             sx={{ cursor: 'pointer' }}
           >
-            Don't have an account? Sign Up
+            Je suis nouveau ici. S'inscrire
           </Link>
         </Box>
       </form>

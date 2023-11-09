@@ -28,22 +28,23 @@ export const ProductItem = (product: Product) => {
           }}
           sx={{ cursor: 'pointer' }}
         >
-          
           <CardContent>
             <Box display="flex" justifyContent="space-between">
               <Typography gutterBottom variant="h5" component="div">
                 {product.name}
               </Typography>
               <Typography variant="h6" component="div">
-                <Price price={product.price}/>
+                <Price price={product.price} />
               </Typography>
             </Box>
           </CardContent>
-        <CardMedia
-          component="img"
-          height="210"
-          image="https://www.bandg.com/assets/img/default-product-img.png?w=400&h=225&scale=both&mode=max"
-          alt="item pic"/></Box>
+          <CardMedia
+            component="img"
+            height="210"
+            image="https://www.bandg.com/assets/img/default-product-img.png?w=400&h=225&scale=both&mode=max"
+            alt="item pic"
+          />
+        </Box>
         <CardActions>
           <AddToCartButton {...product} />
         </CardActions>

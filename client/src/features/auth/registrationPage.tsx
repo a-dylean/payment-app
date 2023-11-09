@@ -21,7 +21,7 @@ import { useMutation } from '@tanstack/react-query';
 import { User } from '../../models/api';
 import { FormEventHandler } from 'react';
 import { routes } from '../../helpers/routes';
-import { updateUser } from '../../helpers/userActions';
+import { updateUser } from '../users/userActions';
 
 export const RegistrationForm = () => {
   const continents: MuiTelInputContinent[] = ['EU'];
@@ -58,8 +58,8 @@ export const RegistrationForm = () => {
         }}
       />
       <Box sx={{ m: '0 auto', width: '50%' }}>
-        <Typography component="h1" variant="h5" sx={{ mb: 2 }}>
-          Sign up
+        <Typography component="h1" variant="h5" sx={{ mb: 2, mt: 10 }}>
+          Je suis nouveau ici
         </Typography>
         <form name="registration-form" onSubmit={handleSubmit}>
           <Grid container spacing={2}>
@@ -70,7 +70,7 @@ export const RegistrationForm = () => {
                 required
                 fullWidth
                 id="name"
-                label="First Name"
+                label="Prénom"
                 autoFocus
                 type="text"
                 {...register('name')}
@@ -83,7 +83,7 @@ export const RegistrationForm = () => {
                 required
                 fullWidth
                 id="surname"
-                label="Last Name"
+                label="Nom"
                 {...register('surname')}
               />
             </Grid>
@@ -94,7 +94,7 @@ export const RegistrationForm = () => {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="Adresse e-mail"
                 type="email"
                 {...register('email', {
                   pattern:
@@ -108,7 +108,7 @@ export const RegistrationForm = () => {
                 variant="outlined"
                 required
                 fullWidth
-                label="Password"
+                label="Mot de passe"
                 type="password"
                 id="password"
                 {...register('password')}
@@ -140,31 +140,16 @@ export const RegistrationForm = () => {
                 color="secondary"
                 variant="outlined"
                 fullWidth
-                label="Home address"
+                label="Adresse"
                 id="address"
                 {...register('address')}
               />
             </Grid>
-            <Grid xs={12}>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    value="allowExtraEmails"
-                    color="secondary"
-                    defaultChecked
-                    size="small"
-                  />
-                }
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid>
+            <Grid xs={12}></Grid>
           </Grid>
           <Button type="submit" fullWidth variant="contained" color="secondary">
-            Sign Up
+            S'inscrire
           </Button>
-          <Link href="/" variant="body2">
-            Already have an account? Sign in
-          </Link>
         </form>
       </Box>
     </Layout>

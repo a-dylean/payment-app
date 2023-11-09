@@ -5,14 +5,14 @@ import { routes } from '../../helpers/routes';
 import { orange } from '../../components/theme';
 import { useGetUserOrders } from './ordersActions';
 import { User } from '../../models/api';
-export const OrdersInfo = (user: User ) => {
+export const OrdersInfo = (user: User) => {
   const {
     data: orders,
     isLoading,
     isSuccess,
     error,
   } = useGetUserOrders(user.id);
-  
+
   const navigate = useNavigate();
   let content;
 
@@ -21,9 +21,7 @@ export const OrdersInfo = (user: User ) => {
   } else if (isSuccess) {
     const renderedItems = orders.map((order) => (
       <List key={order.id}>
-        <OrderItem
-          {...order}
-        />
+        <OrderItem {...order} />
       </List>
     ));
     content = (

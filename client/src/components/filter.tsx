@@ -41,15 +41,12 @@ export const Filter: React.FC<FilterProps> = ({
   search,
 }) => {
   const { data: products } = useQuery({
-    queryFn: () =>
-      api
-        .get('products')
-        .then((res) => res.data as Product[]),
+    queryFn: () => api.get('products').then((res) => res.data as Product[]),
   });
-  console.log(products)
+  console.log(products);
   const minPrice = getMin(products);
   const maxPrice = getMax(products);
-  console.log(maxPrice)
+  console.log(maxPrice);
   const handleSortChange = (event: SelectChangeEvent) => {
     chooseSortMethod(event.target.value as string);
   };

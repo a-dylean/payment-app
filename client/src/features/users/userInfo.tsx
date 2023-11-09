@@ -11,7 +11,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import BalconyIcon from '@mui/icons-material/Balcony';
 import { User } from '../../models/api';
 
-export const UserInfo= (user: User) => {
+export const UserInfo = (user: User) => {
   return (
     <ColoredCard>
       <List dense>

@@ -16,7 +16,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { routes } from '../helpers/routes';
 import { queryClient } from '..';
 import { useGetCart, useGetDraftOrder } from '../features/orders/ordersActions';
-import { useCreateUser, useGetUser } from '../helpers/userActions';
+import { useCreateUser, useGetUser } from '../features/users/userActions';
 
 export const Topbar = () => {
   const navigate = useNavigate();

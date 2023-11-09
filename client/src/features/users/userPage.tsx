@@ -1,5 +1,5 @@
 import { Layout } from '../../app/layout';
-import { useGetUser } from '../../helpers/userActions';
+import { useGetUser } from './userActions';
 import { LoginForm } from '../auth/loginPage';
 import { FullProfilePage } from './fullProfilePage';
 import { Container, LinearProgress } from '@mui/material';

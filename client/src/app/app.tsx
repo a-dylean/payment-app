@@ -10,7 +10,7 @@ import { CancelledPayment } from '../features/checkout/cancelledPayment';
 import { useEffect } from 'react';
 import { routes } from '../helpers/routes';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { useCreateUser} from '../helpers/userActions';
+import { useCreateUser} from '../features/users/userActions';
 
 export const App = () => {
   const token = localStorage.getItem('accessToken');

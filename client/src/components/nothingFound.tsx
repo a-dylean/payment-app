@@ -5,8 +5,7 @@ export const NothingFound = () => {
     <>
       <Box sx={{ width: 300 }}>
         <Typography variant="h6" align="center">
-          We couldn't find any items that match your filtering
-          parameters.
+          Aucun article avec ce filtre
         </Typography>
       </Box>
     </>
