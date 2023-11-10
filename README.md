@@ -29,17 +29,17 @@ An e-commerce website with REST API
 git clone https://github.com/a-dylean/payment-app.git
 ```
 2. To run backend navigate to server folder.
-4. To set up Stripe webhook for checkout procedure you need to create a Stripe account and generate secret API key (documentation [here](https://stripe.com/docs/keys)). Add your secret key to .env file.
-5. Configure docker container to run the server and database.
+3. To set up Stripe webhook for checkout procedure you need to create a Stripe account and generate secret API key (documentation [here](https://stripe.com/docs/keys)). Add your secret key to .env file.
+4. Configure docker container to run the server and database.
 ```
 docker-compose -f docker-compose.yml up --build
 ```
 NB! You need to run this command twice: first to set up Stripe webhook listener and second to run the server with configured key.
-6. Seed the database (I removed this command from script to prevent seeding the db each time the container is built).
+5. Seed the database (I removed this command from script to prevent seeding the db each time the container is built).
 ```
 npx prisma db seed
 ```
-7. Navigate to client folder, install dependencies and run frontend on localhost:3000
+6. Navigate to client folder, install dependencies and run frontend on localhost:3000.
 ```
 npm i && npm run start
 ```
