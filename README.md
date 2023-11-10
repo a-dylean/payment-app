@@ -28,7 +28,7 @@ An e-commerce website with REST API
 ```
 git clone https://github.com/a-dylean/payment-app.git
 ```
-2. To run backend navigate to server folder.
+2. To run backend navigate to `server` folder.
 3. To set up Stripe webhook for checkout procedure you need to create a Stripe account and generate secret API key (documentation [here](https://stripe.com/docs/keys)). Add your secret key to .env and .docker-compose.env files.
 4. Configure docker container to run the server and database.
 ```
@@ -40,15 +40,15 @@ NB! You need to run this command twice: first to set up Stripe webhook listener 
 ```
 npx prisma db seed
 ```
-6. Navigate to client folder, install dependencies and run frontend on localhost:3000.
+6. Navigate to `client` folder, install dependencies and run frontend on localhost:3000.
 ```
 npm i && npm run start
 ```
 
 ## Screenshots ##
 <p align="center" width="100%">
-<img width="541" alt="Screenshot 2023-11-09 225025" src="https://github.com/a-dylean/payment-app/assets/83976465/561c9537-4901-4317-8b6f-81e41d6b0178">
-<img width="555" alt="Screenshot 2023-11-09 225208" src="https://github.com/a-dylean/payment-app/assets/83976465/ebbb36d4-cb9a-4416-8316-fa366da7419f">
-<img width="551" alt="Screenshot 2023-11-09 224906" src="https://github.com/a-dylean/payment-app/assets/83976465/30319960-85f9-4d43-a66f-495d329dc2b3">
-<img width="548" alt="Screenshot 2023-11-09 225541" src="https://github.com/a-dylean/payment-app/assets/83976465/e0646625-76d4-4942-a704-77e0a8aca39a">
+<img width="541" alt="Screenshot 2023-11-09 225025" src="https://github.com/a-dylean/payment-app/assets/83976465/83dccb85-0159-4d50-aa81-bbdb2b357c4b">
+<img width="555" alt="Screenshot 2023-11-09 225208" src="https://github.com/a-dylean/payment-app/assets/83976465/a57fa0c5-d90e-450e-b792-4f5ff5cdaa72">
+<img width="548" alt="Screenshot 2023-11-09 225541" src="https://github.com/a-dylean/payment-app/assets/83976465/92faa820-407a-4f82-9691-2df7b4ce87ab">
+<img width="551" alt="Screenshot 2023-11-09 224906" src="https://github.com/a-dylean/payment-app/assets/83976465/8b9665ed-3875-44f6-bcef-b331df1f46a2">
 </p>
