@@ -43,12 +43,12 @@ export const Filter: React.FC<FilterProps> = ({
   const { data: products } = useQuery({
     queryFn: () => api.get('products').then((res) => res.data as Product[]),
   });
-  const minPrice = getMin(products);
-  const maxPrice = getMax(products);
+  const minPrice = getMin(products) || 0;
+  const maxPrice = getMax(products) || 0;
   const handleSortChange = (event: SelectChangeEvent) => {
     chooseSortMethod(event.target.value as string);
   };
-  const [value, setValue] = useState<number[]>([0, 0]);
+  const [value, setValue] = useState<number[]>([minPrice, maxPrice]);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const valuetext = (value: number[]) => {
     if (value[0] === 0 && value[1] === 0) {
