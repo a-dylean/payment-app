@@ -13,14 +13,14 @@ services:
     volumes:
       - ./db:/var/lib/mysql
   backend-db-migrations:
-      env_file: .env
+      env_file: .docker-compose.env
       build:
         context: ./
       depends_on:
       - db
       command: sh migrate.production.sh
   backend:
-    env_file: .env
+    env_file: .docker-compose.env
     depends_on:
       - backend-db-migrations
       - stripe-webhook-listener
@@ -29,7 +29,7 @@ services:
     ports:
       - 4001:4001
   stripe-webhook-listener:
-    env_file: .env
+    env_file: .docker-compose.env
     image: stripe/stripe-cli
     command: listen --forward-to backend:4001/stripe/webhook
 
