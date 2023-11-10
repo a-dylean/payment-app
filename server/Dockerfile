@@ -14,7 +14,4 @@ COPY src /opt/app/src
 COPY migrate.production.sh /opt/app/
 RUN npm run build
 
-ARG PORT=8000
-ENV PORT=$PORT
-
 CMD ["node", "build/src/server.js"]

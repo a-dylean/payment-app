@@ -39,7 +39,7 @@ export const App = () => {
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
-      <ReactQueryDevtools initialIsOpen />
+      {/* <ReactQueryDevtools initialIsOpen /> */}
     </>
   );
 };

@@ -43,10 +43,8 @@ export const Filter: React.FC<FilterProps> = ({
   const { data: products } = useQuery({
     queryFn: () => api.get('products').then((res) => res.data as Product[]),
   });
-  console.log(products);
   const minPrice = getMin(products);
   const maxPrice = getMax(products);
-  console.log(maxPrice);
   const handleSortChange = (event: SelectChangeEvent) => {
     chooseSortMethod(event.target.value as string);
   };
