@@ -29,7 +29,7 @@ An e-commerce website with REST API
 git clone https://github.com/a-dylean/payment-app.git
 ```
 2. To run backend navigate to server folder.
-3. To set up Stripe webhook for checkout procedure you need to create a Stripe account and generate secret API key (documentation [here](https://stripe.com/docs/keys)). Add your secret key to .env file.
+3. To set up Stripe webhook for checkout procedure you need to create a Stripe account and generate secret API key (documentation [here](https://stripe.com/docs/keys)). Add your secret key to .env and .docker-compose.env files.
 4. Configure docker container to run the server and database.
 ```
 docker-compose -f docker-compose.yml up --build
