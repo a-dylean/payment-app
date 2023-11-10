@@ -35,6 +35,7 @@ git clone https://github.com/a-dylean/payment-app.git
 docker-compose -f docker-compose.yml up --build
 ```
 NB! You need to run this command twice: first to set up Stripe webhook listener and second to run the server with configured key.
+
 5. Seed the database (I removed this command from script to prevent seeding the db each time the container is built).
 ```
 npx prisma db seed
